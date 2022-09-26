@@ -14,7 +14,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
             "c.course_name,c.duration,c.image,c.description,c.dateOfStart) from Course c")
     List<CourseResponse> getAllCourses();
 
-    @Query("select c from Course c where upper(c.course_name) like concat('%',:text, '%') ")
+    @Query("select c from Course c where upper(c.course_name) like upper(concat('%',:text, '%')) ")
     List<Course> searByCourseName(@Param("text") String text, Pageable pageable);
 
 

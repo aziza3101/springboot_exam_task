@@ -20,7 +20,7 @@ public class LessonService {
     public LessonResponse saveLesson(LessonRequest lessonRequest) {
         Lesson lesson = mapToEntity(lessonRequest);
         Course course = courseRepository.findById(lessonRequest.getCourseId())
-                .orElseThrow(() -> new org.webjars.NotFoundException("course with id: " + lessonRequest.getCourseId() + " does not exists"));
+                .orElseThrow(() -> new NotFoundException("course with id: " + lessonRequest.getCourseId() + " does not exists"));
         course.addLesson(lesson);
         lesson.setCourses(course);
         lessonRepository.save(lesson);

@@ -49,7 +49,6 @@ public class CompanyController {
     public List<CompanyResponse> getAll() {
         return service.findAllCompany();
     }
-
     public CompanyResponseView getAllCompaniesPagination(@RequestParam(name = "text", required = false) String text,
                                                 @RequestParam int page,
                                                 @RequestParam int size) {

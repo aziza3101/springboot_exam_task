@@ -12,4 +12,5 @@ public class StudentResponse {
     private StudyFormat studyFormat;
     private LocalDate created;
     private boolean enabled;
+    private Long courseId;
 }

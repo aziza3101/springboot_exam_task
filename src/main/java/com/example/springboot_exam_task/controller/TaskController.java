@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/task")
-@PreAuthorize("hasAnyAuthority('INSTRUCTOR', 'STUDENT')")
+@PreAuthorize("hasAuthority('INSTRUCTOR')")
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService taskService;
@@ -22,6 +22,7 @@ public class TaskController {
     }
 
     @GetMapping("/findById/{id}")
+    @PreAuthorize("hasAnyAuthority('INSTRUCTOR', 'STUDENT')")
     public TaskResponse getTaskById(@PathVariable Long id) {
         return taskService.findById(id);
     }
@@ -38,7 +39,7 @@ public class TaskController {
     }
 
     @GetMapping("/getAll")
-//    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','STUDENT')")
     public List<TaskResponse> getAllTasks() {
         return taskService.findAll();
     }

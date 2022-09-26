@@ -30,7 +30,6 @@ public class CourseController {
     }
 
     @GetMapping("/getCourseById/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN','STUDENT')")
     public CourseResponse getCourseById(@PathVariable Long id) {
         return courseService.getCourseById(id);
     }

@@ -11,8 +11,8 @@ public class StudentRequest {
     private String lastName;
     private String phoneNumber;
     private String email;
-    @Enumerated(EnumType.ORDINAL)
     private StudyFormat studyFormat;
     private Long companyId;
+    private Long courseId;
     private String password;
 }

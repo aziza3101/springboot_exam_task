@@ -26,7 +26,7 @@ public class InstructorService {
     public InstructorResponse saveInstructor(InstructorRequest instructorRequest) {
         Instructor instructor = mapToEntity(instructorRequest);
         Company company = companyRepository.findById(instructorRequest.getCompanyId())
-                .orElseThrow(() -> new org.webjars.NotFoundException("company with id: " + instructorRequest.getCompanyId() + " does not exists"));
+                .orElseThrow(() -> new NotFoundException("company with id: " + instructorRequest.getCompanyId() + " does not exists"));
         company.addInstructor(instructor);
         instructor.setCompany(company);
         User user = new User();
@@ -81,8 +81,6 @@ public class InstructorService {
                 "assigned successfully"
         );
     }
-
-
     public String assign(Long instructorId, Long courseId) {
         Instructor instructor = instructorRepository.findById(instructorId).orElseThrow(
                 () -> new NotFoundException(String.format("Instructor with =%s id not found", instructorId)));

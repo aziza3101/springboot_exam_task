@@ -26,19 +26,16 @@ public class VideoService {
         return mapToView(video);
 
     }
-
     public VideoResponse findById(Long id) {
         Video video = getById(id);
         return mapToView(video);
     }
-
     public VideoResponse update(Long id, VideoRequest videoRequest) {
         Video video = getById(id);
         convertToUpdate(video,videoRequest);
         videoRepository.save(video);
         return mapToView(video);
     }
-
     public SimpleResponse deleteVideoId(Long id) {
         boolean exists = videoRepository.existsById(id);
         if (!exists) {
@@ -50,11 +47,9 @@ public class VideoService {
                 "video with id " + id +  "deleted successfully"
         );
     }
-
     public List<VideoResponse> findAll() {
         return convertAllToView(videoRepository.findAll());
     }
-
     private Video getById(Long id) {
         return videoRepository.findById(id).orElseThrow(() -> new NotFoundException("video with id: " + id + " not found!"));
     }

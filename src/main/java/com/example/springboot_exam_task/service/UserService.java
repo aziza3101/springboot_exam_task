@@ -16,7 +16,6 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 //    private final PasswordEncoder passwordEncoder;
-
     public RegisterResponse create(RegisterRequest registerRequest){
         User user = mapToEntity(registerRequest);
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
@@ -42,7 +41,6 @@ public class UserService implements UserDetailsService {
         response.setFirstName(user.getFirstName());
 
         return response;
-
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

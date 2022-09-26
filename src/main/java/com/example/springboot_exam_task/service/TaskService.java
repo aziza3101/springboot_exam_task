@@ -26,12 +26,10 @@ public class TaskService {
         taskRepository.save(task);
         return mapToView(task);
     }
-
     public TaskResponse findById(Long id) {
         Task task = getById(id);
         return mapToView(task);
     }
-
     public TaskResponse update(Long id, TaskRequest taskRequest) {
         Task task = getById(id);
         convertToUpdate(task, taskRequest);
@@ -50,7 +48,6 @@ public class TaskService {
                 "task with id " + id + "deleted successfully"
         );
     }
-
     public List<TaskResponse> findAll() {
         return convertAllToView(taskRepository.findAll());
     }
